@@ -1,73 +1,73 @@
 --- 
 version: "2"
 services: 
-  zk_1: 
-    image: confluentinc/cp-zookeeper:latest
-    network_mode: host
-    restart: always
-    ports: 
-      - 22181:22181
-    environment:
-      ZOOKEEPER_SERVER_ID: 1
-      ZOOKEEPER_CLIENT_PORT: 22181
-      ZOOKEEPER_SERVERS: "${ZK_SERVERS}" #"localhost:22888:23888"
-  
-  zk_2: 
-    image: confluentinc/cp-zookeeper:latest
-    network_mode: host
-    restart: always
-    ports: 
-      - 32181:32181
-    environment:
-      ZOOKEEPER_SERVER_ID: 2
-      ZOOKEEPER_CLIENT_PORT: 32181
-      ZOOKEEPER_SERVERS: "${ZK_SERVERS}"
-  zk_3: 
-    image: confluentinc/cp-zookeeper:latest
-    network_mode: host
-    restart: always
-    ports: 
-      - 42181:42181
-    environment:
-      ZOOKEEPER_SERVER_ID: 3 
-      ZOOKEEPER_CLIENT_PORT: 42181
-      ZOOKEEPER_SERVERS: "${ZK_SERVERS}"
+#  zk_1: 
+#    image: confluentinc/cp-zookeeper:latest
+#    network_mode: host
+#    restart: always
+#    ports: 
+#      - 22181:22181
+#    environment:
+#      ZOOKEEPER_SERVER_ID: 1
+#      ZOOKEEPER_CLIENT_PORT: 22181
+#      ZOOKEEPER_SERVERS: "${ZK_SERVERS}" #"localhost:22888:23888"
+#  
+#  zk_2: 
+#    image: confluentinc/cp-zookeeper:latest
+#    network_mode: host
+#    restart: always
+#    ports: 
+#      - 32181:32181
+#    environment:
+#      ZOOKEEPER_SERVER_ID: 2
+#      ZOOKEEPER_CLIENT_PORT: 32181
+#      ZOOKEEPER_SERVERS: "${ZK_SERVERS}"
+#  zk_3: 
+#    image: confluentinc/cp-zookeeper:latest
+#    network_mode: host
+#    restart: always
+#    ports: 
+#      - 42181:42181
+#    environment:
+#      ZOOKEEPER_SERVER_ID: 3 
+#      ZOOKEEPER_CLIENT_PORT: 42181
+#      ZOOKEEPER_SERVERS: "${ZK_SERVERS}"
   kafka_1: 
     network_mode: host
     restart: always
     environment: 
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
       KAFKA_ZOOKEEPER_CONNECT: "${KFK_ZK_CONNECT}" #localhost:2181 #"${KFK_ZK_CONNECT}" 
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://swarm-node00.teco.edu:29092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://smartaqnet-0-node1.teco.edu:9092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       CONNECT_HEAP: "3G"
     image: confluentinc/cp-kafka:latest
     ports: 
-      - 29092:29092
-  kafka_2: 
-    network_mode: host
-    restart: always
-    environment: 
-      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
-      KAFKA_ZOOKEEPER_CONNECT: "${KFK_ZK_CONNECT}" 
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://swarm-node00.teco.edu:39092
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      CONNECT_HEAP: "3G"
-    image: confluentinc/cp-kafka:latest
-    ports: 
-      - 39092:39092
-  kafka_3: 
-    network_mode: host
-    restart: always
-    environment: 
-      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
-      KAFKA_ZOOKEEPER_CONNECT: "${KFK_ZK_CONNECT}" 
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://swarm-node00.teco.edu:49092
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      CONNECT_HEAP: "3G"
-    image: confluentinc/cp-kafka:latest
-    ports: 
-      - 49092:49092
+      - 9092:9092
+#  kafka_2: 
+#    network_mode: host
+#    restart: always
+#    environment: 
+#      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+#      KAFKA_ZOOKEEPER_CONNECT: "${KFK_ZK_CONNECT}" 
+#      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://swarm-node00.teco.edu:39092
+#      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+#      CONNECT_HEAP: "3G"
+#    image: confluentinc/cp-kafka:latest
+#    ports: 
+#      - 39092:39092
+#  kafka_3: 
+#    network_mode: host
+#    restart: always
+#    environment: 
+#      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+#      KAFKA_ZOOKEEPER_CONNECT: "${KFK_ZK_CONNECT}" 
+#      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://swarm-node00.teco.edu:49092
+#      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+#      CONNECT_HEAP: "3G"
+#    image: confluentinc/cp-kafka:latest
+#    ports: 
+#      - 49092:49092
 #  kafka-connect: 
 #    environment: 
 #      CONNECT_BOOTSTRAP_SERVERS: kafka:9092
