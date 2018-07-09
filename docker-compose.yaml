@@ -4,6 +4,7 @@ services:
   zk_1: 
     image: confluentinc/cp-zookeeper:latest
     network_mode: host
+    restart: always
     ports: 
       - 22181:22181
     environment:
@@ -14,6 +15,7 @@ services:
   zk_2: 
     image: confluentinc/cp-zookeeper:latest
     network_mode: host
+    restart: always
     ports: 
       - 32181:32181
     environment:
@@ -23,6 +25,7 @@ services:
   zk_3: 
     image: confluentinc/cp-zookeeper:latest
     network_mode: host
+    restart: always
     ports: 
       - 42181:42181
     environment:
@@ -31,6 +34,7 @@ services:
       ZOOKEEPER_SERVERS: "${ZK_SERVERS}"
   kafka_1: 
     network_mode: host
+    restart: always
     environment: 
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
       KAFKA_ZOOKEEPER_CONNECT: "${KFK_ZK_CONNECT}" #localhost:2181 #"${KFK_ZK_CONNECT}" 
@@ -42,6 +46,7 @@ services:
       - 29092:29092
   kafka_2: 
     network_mode: host
+    restart: always
     environment: 
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
       KAFKA_ZOOKEEPER_CONNECT: "${KFK_ZK_CONNECT}" 
@@ -53,6 +58,7 @@ services:
       - 39092:39092
   kafka_3: 
     network_mode: host
+    restart: always
     environment: 
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
       KAFKA_ZOOKEEPER_CONNECT: "${KFK_ZK_CONNECT}" 
