@@ -1,6 +1,6 @@
 # kafka-env-cluster
 
-This repo helps you set up a kafka cluster with zookeeper and kafka based on docker images from confluent. Modify the corresponding **docker-compose.yaml** and **.env** to initialze nodes with different roles.
+This repo helps you set up a kafka cluster with zookeeper and kafka docker images from confluent. Modify the corresponding **docker-compose.yaml** and **.env** to initialze nodes with different roles.
 
 ## Quick start:
 ```
@@ -20,5 +20,10 @@ kafka-topics --zookeeper smartaqnet-0-node0:22181 --create --topic aTopic --repl
 Check the result:
 ```
 kafka-topics --zookeeper smartaqnet-0-node0:22181 --describe --topic aTopic
+```
+The commands above can be executed on any node with kafka client programs.
+Run the following cmd from host after setting up kafka containers to create Sensorthings entity topics:
+```
+docker exec -it $(docker ps -q) "/etc/confluent/docker/init-topics.sh"
 ```
 
