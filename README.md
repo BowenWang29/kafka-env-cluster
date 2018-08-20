@@ -1,6 +1,6 @@
 # kafka-env-cluster
 
-This repo helps you set up a kafka cluster with zookeeper and kafka based on docker images from confluent. Modify the corresponding docker-compose.yaml and .env to spawn nodes with different roles.
+This repo helps you set up a kafka cluster with zookeeper and kafka based on docker images from confluent. Modify the corresponding **docker-compose.yaml** and **.env** to initialze nodes with different roles.
 
 ## Quick start:
 ```
