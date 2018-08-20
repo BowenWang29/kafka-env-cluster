@@ -24,6 +24,6 @@ kafka-topics --zookeeper smartaqnet-0-node0:22181 --describe --topic aTopic
 The commands above can be executed on any node with kafka client programs.
 Run the following cmd from host after setting up kafka containers to create Sensorthings entity topics:
 ```
-docker exec -it $(docker ps -q) "/etc/confluent/docker/init-topics.sh"
+docker exec -it $(docker ps -q --filter "name=kafka-env-cluster") "/etc/confluent/docker/init-topics.sh"
 ```
 
